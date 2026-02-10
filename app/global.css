@@ -1,3 +1,139 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    .flex-center {
+        @apply flex justify-center items-center;
+    }
+
+    .flex-between {
+        @apply flex justify-between items-center;
+    }
+
+    .flex-start {
+        @apply flex justify-center items-start;
+    }
+}
+
+@layer components {
+    .cart-btn {
+        @apply flex justify-center items-center rounded-full size-10 bg-dark-100;
+    }
+
+    .cart-badge {
+        @apply flex absolute -right-1 -top-2 justify-center items-center rounded-full size-5 bg-primary;
+    }
+
+    .cart-item {
+        @apply flex flex-row justify-between items-end p-3 mb-4 bg-white rounded-xl shadow-md shadow-dark-100/10;
+    }
+
+    .cart-item__image {
+        @apply flex justify-center items-center rounded-lg size-24 bg-primary/10;
+    }
+
+    .cart-item__actions {
+        @apply flex flex-row justify-center items-center rounded-md size-5 bg-primary/10;
+    }
+
+    .custom-btn {
+        @apply flex flex-row justify-center p-3 w-full rounded-full bg-primary;
+    }
+
+    .custom-header {
+        @apply flex flex-row justify-between items-center mb-10 w-full;
+    }
+
+    .label {
+        @apply pl-2 w-full text-base text-gray-500 text-start font-quicksand-medium;
+    }
+
+    .input {
+        @apply p-3 w-full text-base leading-5 rounded-lg border-b font-quicksand-semibold text-dark-100;
+    }
+
+    .filter {
+        @apply px-6 py-3 mr-2 rounded-full shadow-sm shadow-black/10;
+    }
+
+    .menu-card {
+        @apply flex relative justify-end items-center px-3.5 py-9 pt-24 bg-white rounded-3xl shadow-md shadow-black/10;
+    }
+
+    .profile-field {
+        @apply flex flex-row justify-start items-center mb-4;
+    }
+
+    .profile-field__icon {
+        @apply flex justify-center items-center mr-3 rounded-full size-12 bg-primary/10;
+    }
+
+    .searchbar {
+        @apply flex relative flex-row gap-5 justify-center items-center w-full bg-white rounded-full shadow-md shadow-black/10 font-quicksand-medium text-dark-100;
+    }
+
+    .tab-icon {
+        @apply flex gap-1 justify-center items-center mt-12 min-h-full min-w-20;
+    }
+
+    .offer-card {
+        @apply flex overflow-hidden gap-5 items-center my-3 w-full h-48 rounded-xl shadow-lg;
+    }
+
+    .offer-card__info {
+        @apply flex flex-col flex-1 gap-4 justify-center items-start h-full;
+    }
+
+    .profile-avatar {
+        @apply relative rounded-full border-2 border-white size-28;
+    }
+
+    .profile-edit {
+        @apply flex absolute right-0 bottom-2 justify-center items-center p-2 rounded-full border-2 border-white bg-primary size-7;
+    }
+
+    .h1-bold {
+        @apply text-3xl font-quicksand-bold;
+    }
+
+    .h3-bold {
+        @apply text-xl font-quicksand-bold;
+    }
+
+    .base-bold {
+        @apply text-lg font-quicksand-bold !important;
+    }
+
+    .base-semibold {
+        @apply text-lg font-quicksand-semibold;
+    }
+
+    .base-regular {
+        @apply text-lg font-quicksand;
+    }
+
+    .paragraph-bold {
+        @apply text-base font-quicksand-bold;
+    }
+
+    .paragraph-semibold {
+        @apply text-base font-quicksand-semibold;
+    }
+
+    .paragraph-medium {
+        @apply text-base font-quicksand-medium;
+    }
+
+    .body-medium {
+        @apply text-sm font-quicksand-medium;
+    }
+
+    .body-regular {
+        @apply text-sm font-quicksand;
+    }
+
+    .small-bold {
+        @apply text-xs font-quicksand-bold;
+    }
+}
