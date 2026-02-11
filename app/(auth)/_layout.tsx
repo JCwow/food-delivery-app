@@ -1,12 +1,33 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { images } from '@/constants'
+import { useAuthSession } from '@/lib/useAuthSession'
+import { Redirect } from 'expo-router'
 import { Slot } from 'expo-router'
+import React from 'react'
+import { ActivityIndicator, Dimensions, Image, ImageBackground, KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native'
 export default function _layout() {
+  const { isAuthenticated } = useAuthSession()
+
+  if (isAuthenticated === null) {
+    return (
+      <View className="flex-1 items-center justify-center bg-white">
+        <ActivityIndicator size="small" color="#FE8C00" />
+      </View>
+    )
+  }
+
+  if (isAuthenticated) return <Redirect href="/(tabs)" />
+
   return (
-    <SafeAreaView>
-        <Text>_layout</Text>
-        <Slot></Slot>
-    </SafeAreaView>
+      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        <ScrollView className="h-full bg-white" keyboardShouldPersistTaps="handled">
+          <View className="relative w-full" style={{height: Dimensions.get('screen').height / 2.25}}>
+            <ImageBackground source={images.loginGraphic} className="rounded-b-lg size-full" resizeMode='stretch'></ImageBackground>
+            <Image source={images.logo} className="absolute -bottom-16 z-10 self-center size-48"></Image>
+          </View>
+          <Slot></Slot>
+        </ScrollView>
+       
+      </KeyboardAvoidingView>
+       
   )
 }
