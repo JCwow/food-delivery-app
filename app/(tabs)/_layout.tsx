@@ -1,10 +1,10 @@
-import { useAuthSession } from '@/lib/useAuthSession';
+import useAuthStore from '@/store/auth.store';
 import { Redirect, Slot } from 'expo-router';
 import React from 'react';
 import { ActivityIndicator, View } from 'react-native';
 
-export default function _Layout() {
-  const { isAuthenticated } = useAuthSession();
+export default function TabLayout() {
+  const { isAuthenticated } = useAuthStore();
 
   if (isAuthenticated === null) {
     return (
