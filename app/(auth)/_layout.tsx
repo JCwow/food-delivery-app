@@ -1,15 +1,14 @@
 import { images } from '@/constants'
-import { useAuthSession } from '@/lib/useAuthSession'
-import { Redirect } from 'expo-router'
-import { Slot } from 'expo-router'
+import useAuthStore from '@/store/auth.store'
+import { Redirect, Slot } from 'expo-router'
 import React from 'react'
 import { ActivityIndicator, Dimensions, Image, ImageBackground, KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native'
-export default function _layout() {
-  const { isAuthenticated } = useAuthSession()
+export default function AuthLayout() {
+  const { isAuthenticated } = useAuthStore()
 
   if (isAuthenticated === null) {
     return (
-      <View className="flex-1 items-center justify-center bg-white">
+      <View className="flex-1 justify-center items-center bg-white">
         <ActivityIndicator size="small" color="#FE8C00" />
       </View>
     )
