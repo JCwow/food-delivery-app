@@ -2,9 +2,18 @@ import CartButton from "@/components/CartButton";
 import { images, offers } from "@/constants";
 import useAuthStore from "@/store/auth.store";
 import cn from 'clsx';
+import { router } from "expo-router";
 import { Fragment } from "react";
 import { FlatList, Image, Pressable, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+const OFFER_QUERY_BY_TITLE: Record<string, string | undefined> = {
+  "SUMMER COMBO": undefined,
+  "BURGER BASH": "burger",
+  "PIZZA PARTY": "pizza",
+  "BURRITO DELIGHT": "burrito",
+};
+
 export default function Home() {
   const {user} = useAuthStore();
   console.log("USER:", JSON.stringify(user, null, 2));
@@ -14,9 +23,20 @@ export default function Home() {
         data={offers}
         renderItem={({item, index}) => {
           const isEven = index % 2 === 0;
+          const query = OFFER_QUERY_BY_TITLE[item.title];
           return (
             <View>
-              <Pressable className={cn("offer-card", isEven ? 'flex-row-reverse' : 'flex-row')} style={{backgroundColor: item.color}}  android_ripple={{color: "#fffff22"}}>
+              <Pressable
+                className={cn("offer-card", isEven ? 'flex-row-reverse' : 'flex-row')}
+                style={{backgroundColor: item.color}}
+                android_ripple={{color: "#fffff22"}}
+                onPress={() =>
+                  router.push({
+                    pathname: "/(tabs)/search",
+                    params: query ? { query } : {},
+                  })
+                }
+              >
                 {({pressed}) => (
                   <Fragment>
                     <View className="w-1/2 h-full">
